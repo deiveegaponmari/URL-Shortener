@@ -60,7 +60,7 @@ export default function Signup() {
                     <button className="btn btn-primary" onClick={()=>SaveData()} type="button">Register</button>
                 </div>
                 <p>Already have an account?</p>
-                <Link to={"/signin"}>Login</Link>
+                <Link to={"/login"}>Login</Link>
             </Card>
         </div>
     )

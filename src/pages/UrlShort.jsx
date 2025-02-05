@@ -24,7 +24,7 @@ export default function UrlShort(){
           if(response.ok){
             alert("short Url created successfully");
             setInterval(()=>{
-                navigate("/showshorturl/:shortId")
+                navigate("/showUrlTable")
             })
           }
         }).catch((error)=>{

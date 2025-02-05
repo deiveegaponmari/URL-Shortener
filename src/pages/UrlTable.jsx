@@ -1,4 +1,15 @@
+import axios from 'axios';
 export default function UrlTable(){
+  axios.get("http://localhost:4000/urlshort/allURL")
+  .then(function(response){
+    console.log(response)
+  })
+  .catch(function(error){
+    console.log(error)
+  })
+  .finally(function(){
+    console.log("something went wrong")
+  })
     return(
         <table class="table">
   <thead>
