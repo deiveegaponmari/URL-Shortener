@@ -4,13 +4,13 @@ import { useNavigate } from "react-router"
 import { useData } from "../context/data";
 
 export default function Signin() {
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     const EMAIL = useRef(null);
     const PASSWORD = useRef(null);
-    const {setLoggedIn}=useData();
+    const { setLoggedIn } = useData();
 
     function handleLogin() {
-    /*     e.preventDefault(); */
+        /*     e.preventDefault(); */
         const payload = {
             email: EMAIL.current.value,
             password: PASSWORD.current.value
@@ -28,29 +28,29 @@ export default function Signin() {
         }).then((result) => {
             console.log(result)
             //go to home page
-            if(result && result.status===200){
-                setInterval(()=>{
+            if (result && result.status === 200) {
+                setInterval(() => {
                     navigate("/urlshort")
-                },2000)  
-               return result.json();
+                }, 2000)
+                return result.json();
             }
-         
-        }).then((data)=>{
-            if(data && data.token){
+
+        }).then((data) => {
+            if (data && data.token) {
                 setLoggedIn(true)
-                window.sessionStorage.setItem("_token",JSON.stringify(data.token))
+                window.sessionStorage.setItem("_token", JSON.stringify(data.token))
             }
         }).catch((error) => {
             console.log(error)
         })
 
     }
-    function handleforgot(){
-            setInterval(()=>{
-                navigate('/EmailVerify')
-            },1000)
-        }
-    
+    function handleforgot() {
+
+        navigate('/EmailVerify')
+
+    }
+
 
     return (
         <div className="container">
@@ -64,11 +64,11 @@ export default function Signin() {
                     <input ref={PASSWORD} type="password" className="form-control" id="password" placeholder="********" />
                 </div>
                 <div className="d-grid gap-2">
-                    <button className="btn btn-primary" onClick={()=>handleLogin()} type="button">Login</button>
+                    <button className="btn btn-primary" onClick={() => handleLogin()} type="button">Login</button>
                 </div>
                 <div className="mb-2">
                     <h6>Forgot password?</h6>
-                    <button onClick={()=>handleforgot()}>Click Here</button>
+                    <button onClick={() => handleforgot()}>Click Here</button>
                 </div>
             </Card>
         </div>
